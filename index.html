@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURUM CACAO Y CAFÉ | Café y Cacao de Honduras para el Mundo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2c1810;        /* Espresso oscuro */
+      --primary-light: #432818;  /* Cacao tostado */
+      --accent: #b4692e;         /* Dorado / Caramelo Aurum */
+      --accent-hover: #96531f;
+      --whatsapp: #16a34a;
+      --whatsapp-hover: #15803d;
+      --bg: #faf7f4;             /* Crema cálido */
+      --surface: #ffffff;
+      --text-main: #23140d;
+      --text-muted: #6b5346;
+      --border: #e6dcd3;
+      --radius: 14px;
+      --shadow-sm: 0 2px 10px rgba(44, 24, 16, 0.05);
+      --shadow-md: 0 12px 28px -6px rgba(44, 24, 16, 0.10);
+      --shadow-lg: 0 22px 44px -10px rgba(44, 24, 16, 0.18);
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background: var(--bg); }
+    body { line-height: 1.6; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* NAVBAR */
+    header {
+      position: sticky; top: 0; z-index: 900;
+      background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: 1240px; margin: 0 auto; padding: 0.9rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
+    .nav-links a:hover { color: var(--accent); }
+    .cart-trigger {
+      position: relative; background: var(--primary); color: #fff; border: none;
+      padding: 0.6rem 1.15rem; border-radius: 50px; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; gap: 0.5rem; transition: var(--transition);
+    }
+    .cart-trigger:hover { background: var(--accent); transform: translateY(-1px); }
+    .cart-badge {
+      background: var(--accent); color: #fff; font-size: 0.75rem; font-weight: 700;
+      padding: 0.1rem 0.5rem; border-radius: 99px; border: 1px solid rgba(255,255,255,0.4);
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #2c1810 0%, #4a2c1d 100%);
+      color: #fff; padding: 5.5rem 1.5rem; position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; right: -10%; top: -20%; width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(180, 105, 46, 0.28) 0%, transparent 70%); pointer-events: none;
+    }
+    .hero-grid {
+      max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem; align-items: center;
+    }
+    .hero-tag {
+      display: inline-block; background: rgba(180, 105, 46, 0.25); border: 1px solid rgba(235, 179, 128, 0.45);
+      color: #f3c69f; padding: 0.35rem 0.95rem; border-radius: 99px; font-size: 0.82rem; font-weight: 700; margin-bottom: 1.2rem;
+    }
+    .hero h1 { font-size: clamp(2.1rem, 4vw, 3.25rem); line-height: 1.15; font-weight: 800; margin-bottom: 1.2rem; }
+    .hero p { color: #e6dcd3; font-size: 1.06rem; margin-bottom: 2rem; max-width: 580px; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.85rem 1.6rem; border-radius: 10px; font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; border: none; cursor: pointer; transition: var(--transition);
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(180, 105, 46, 0.35); }
+    .btn-whatsapp { background: var(--whatsapp); color: #fff; }
+    .btn-whatsapp:hover { background: var(--whatsapp-hover); transform: translateY(-2px); }
+    .hero-card {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 20px; padding: 1.5rem; backdrop-filter: blur(8px);
+    }
+    .hero-card img { border-radius: 12px; height: 260px; width: 100%; object-fit: cover; margin-bottom: 1rem; }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center; margin-top: 1.4rem; }
+    .hero-stats div strong { display: block; font-size: 1.3rem; color: #f3c69f; }
+    .hero-stats div span { font-size: 0.8rem; color: #d6c7bc; }
+
+    /* SECCIONES */
+    section { padding: 4.5rem 1.5rem; }
+    .container { max-width: 1240px; margin: 0 auto; }
+    .section-header { text-align: center; max-width: 680px; margin: 0 auto 3rem; }
+    .section-header h2 { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 0.6rem; }
+    .section-header p { color: var(--text-muted); }
+
+    /* BENEFICIOS */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .benefit-card {
+      background: var(--surface); padding: 1.8rem; border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition);
+    }
+    .benefit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .benefit-icon {
+      width: 48px; height: 48px; border-radius: 12px; background: #fdf3eb; color: var(--accent);
+      display: grid; place-items: center; font-size: 1.45rem; margin-bottom: 1rem;
+    }
+
+    /* FILTROS Y CATÁLOGO */
+    .filters-bar {
+      background: var(--surface); padding: 1.25rem; border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2rem;
+    }
+    .filters-bar input, .filters-bar select {
+      width: 100%; padding: 0.72rem 0.9rem; border: 1px solid var(--border);
+      border-radius: 8px; font-size: 0.92rem; background: var(--bg); color: var(--text-main);
+    }
+    .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
+    .product-card {
+      background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);
+      overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition);
+      display: flex; flex-direction: column;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .card-img-wrap { position: relative; height: 220px; background: #efe8e1; overflow: hidden; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .product-card:hover .card-img-wrap img { transform: scale(1.05); }
+    .badges { position: absolute; top: 12px; left: 12px; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .badge {
+      padding: 0.25rem 0.7rem; border-radius: 99px; font-size: 0.74rem; font-weight: 700;
+      backdrop-filter: blur(6px);
+    }
+    .badge-avail { background: rgba(22, 163, 74, 0.92); color: #fff; }
+    .badge-origin { background: rgba(44, 24, 16, 0.88); color: #f3c69f; }
+    .card-body { padding: 1.35rem; flex: 1; display: flex; flex-direction: column; }
+    .card-meta { font-size: 0.8rem; color: var(--accent); font-weight: 700; margin-bottom: 0.25rem; text-transform: uppercase; }
+    .card-title { font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+    .card-specs {
+      display: flex; justify-content: space-between; font-size: 0.83rem; color: var(--text-muted);
+      background: #f7f2ed; padding: 0.5rem 0.75rem; border-radius: 8px; margin-bottom: 0.9rem;
+    }
+    .card-price { font-size: 1.45rem; font-weight: 800; color: var(--primary); margin-top: auto; margin-bottom: 1rem; }
+    .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .btn-sm { padding: 0.65rem 0.85rem; font-size: 0.85rem; border-radius: 8px; }
+    .btn-secondary { background: #f2ebe4; color: var(--primary); }
+    .btn-secondary:hover { background: #e5d8cc; }
+
+    /* QUIENES SOMOS */
+    .about-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .process-steps { display: grid; gap: 1rem; margin-top: 1.5rem; }
+    .step-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-num {
+      min-width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff;
+      display: grid; place-items: center; font-weight: 700; font-size: 0.9rem;
+    }
+    .testimonial-card { background: var(--bg); padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 1rem; }
+
+    /* CONTACTO */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; }
+    .contact-info-box {
+      background: var(--primary); color: #fff; padding: 2.2rem; border-radius: var(--radius);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .contact-form {
+      background: var(--surface); padding: 2.2rem; border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+    }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg);
+    }
+
+    /* MODAL DETALLE PRODUCTO */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(35, 20, 13, 0.68); backdrop-filter: blur(5px);
+      display: none; align-items: center; justify-content: center; z-index: 1100; padding: 1rem;
+    }
+    .modal-backdrop.active { display: flex; animation: fadeIn 0.25s ease; }
+    .modal-card {
+      background: var(--surface); max-width: 820px; width: 100%; border-radius: 18px;
+      overflow: hidden; box-shadow: var(--shadow-lg); position: relative;
+      display: grid; grid-template-columns: 1.05fr 0.95fr;
+    }
+    .modal-close {
+      position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.92); border: none; font-size: 1.15rem; cursor: pointer; z-index: 10;
+    }
+    .modal-img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
+    .modal-content { padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; }
+
+    /* DRAWER CARRITO */
+    .cart-drawer {
+      position: fixed; top: 0; right: -440px; width: 100%; max-width: 420px; height: 100vh;
+      background: var(--surface); box-shadow: -10px 0 30px rgba(0,0,0,0.16);
+      z-index: 1200; transition: right 0.32s ease; display: flex; flex-direction: column;
+    }
+    .cart-drawer.open { right: 0; }
+    .cart-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+    .cart-item {
+      display: flex; gap: 0.9rem; align-items: center; background: var(--bg);
+      padding: 0.8rem; border-radius: 10px; border: 1px solid var(--border);
+    }
+    .cart-item img { width: 68px; height: 56px; border-radius: 8px; object-fit: cover; }
+    .qty-controls { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.35rem; }
+    .qty-btn { width: 24px; height: 24px; border: 1px solid var(--border); background: #fff; border-radius: 6px; cursor: pointer; }
+    .cart-footer { padding: 1.35rem; border-top: 1px solid var(--border); background: var(--bg); }
+
+    /* CHATBOT FLOTANTE */
+    .chatbot-fab {
+      position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; border-radius: 50%;
+      background: var(--primary); color: #f3c69f; border: 2px solid var(--accent); box-shadow: var(--shadow-lg);
+      font-size: 1.6rem; cursor: pointer; z-index: 1050; transition: var(--transition);
+    }
+    .chatbot-fab:hover { transform: scale(1.08); background: var(--accent); color: #fff; }
+    .chatbot-window {
+      position: fixed; bottom: 96px; right: 24px; width: 355px; max-width: calc(100vw - 48px);
+      background: var(--surface); border-radius: 18px; box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border); overflow: hidden; display: none; flex-direction: column; z-index: 1050;
+    }
+    .chatbot-window.open { display: flex; animation: fadeIn 0.25s ease; }
+    .chat-head {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff;
+      padding: 1rem 1.2rem; display: flex; justify-content: space-between; align-items: center;
+    }
+    .chat-messages { height: 285px; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; background: var(--bg); }
+    .msg { padding: 0.7rem 0.95rem; border-radius: 12px; font-size: 0.87rem; max-width: 85%; line-height: 1.45; }
+    .msg-bot { background: #fff; border: 1px solid var(--border); align-self: flex-start; }
+    .msg-user { background: var(--accent); color: #fff; align-self: flex-end; }
+    .quick-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.6rem 0.8rem; border-top: 1px solid var(--border); background: #fff; }
+    .chip {
+      font-size: 0.74rem; padding: 0.3rem 0.65rem; border-radius: 99px; border: 1px solid var(--border);
+      background: var(--bg); cursor: pointer; transition: 0.2s;
+    }
+    .chip:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .chat-input-row { display: flex; border-top: 1px solid var(--border); }
+    .chat-input-row input { flex: 1; border: none; padding: 0.8rem; font-size: 0.88rem; outline: none; }
+    .chat-input-row button { background: var(--primary); color: #fff; border: none; padding: 0 1rem; font-weight: 700; cursor: pointer; }
+
+    /* TOAST */
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--primary); color: #fff; padding: 0.75rem 1.4rem; border-radius: 99px;
+      font-size: 0.9rem; font-weight: 600; z-index: 1500; transition: transform 0.3s ease;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .contact-grid, .modal-card { grid-template-columns: 1fr; }
+      .filters-bar { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 540px) {
+      .filters-bar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="brand">AURUM <span>CACAO Y CAFÉ</span></a>
+      <ul class="nav-links">
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#nosotros">Quiénes Somos</a></li>
+        <li><a href="#contacto">Contáctanos</a></li>
+      </ul>
+      <button class="cart-trigger" onclick="toggleCart()">
+        🛒 Carrito <span class="cart-badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HOME / HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-tag">🇭🇳 Origen Honduras • Calidad de Exportación 🌍</span>
+        <h1>El aroma y la pureza del mejor Café y Cacao de Honduras</h1>
+        <p>Seleccionamos cosechas excepcionales para llevar café y cacao hondureño en grano y en polvo a mercados nacionales e internacionales con frescura garantizada.</p>
+        <div class="hero-btns">
+          <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+          <a href="https://wa.me/50493408605?text=Hola%20%F0%9F%98%8A%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20productos%20de%20AURUM%20CACAO%20Y%20CAF%C3%89." target="_blank" rel="noopener" class="btn btn-whatsapp">Cotizar por WhatsApp</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>100%</strong><span>Origen Hondureño</span></div>
+          <div><strong>1 lb</strong><span>Empaque Fresco</span></div>
+          <div><strong>2027</strong><span>Lote Vigente</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="https://lh3.googleusercontent.com/d/1O1LWwIlUrqW0wAcPqpWctNyOjgBh1hCy" alt="Café en grano AURUM CACAO Y CAFÉ">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <small style="color:#f3c69f; font-weight:700;">PRODUCTO DESTACADO</small>
+            <h3 style="font-size:1.15rem;">Café en grano • Presentación 1lb</h3>
+          </div>
+          <span style="font-weight:800; font-size:1.2rem; color:#f3c69f;">L 150</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>¿Por qué elegir AURUM CACAO Y CAFÉ?</h2>
+        <p>Compromiso con la trazabilidad, frescura de cosecha y estándares listos para exportación desde Honduras.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🌱</div>
+          <h3>Selección de Origen</h3>
+          <p style="color:var(--text-muted); font-size:0.92rem;">Granos de café y cacao cultivados en tierras fértiles de Honduras con perfil aromático superior.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📦</div>
+          <h3>Empaque de Conservación</h3>
+          <p style="color:var(--text-muted); font-size:0.92rem;">Presentación práctica de 1lb con fecha de vencimiento vigente hasta el 11/11/2027.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🌎</div>
+          <h3>Proyección Internacional</h3>
+          <p style="color:var(--text-muted); font-size:0.92rem;">Atendemos pedidos tanto para consumo local en Honduras como para compradores internacionales.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🤝</div>
+          <h3>Atención Personalizada</h3>
+          <p style="color:var(--text-muted); font-size:0.92rem;">Cotiza al detalle o por volumen directamente con nuestro equipo comercial vía WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO / TIENDA -->
+  <section id="catalogo" style="padding-top:1rem;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Catálogo Oficial AURUM CACAO Y CAFÉ</h2>
+        <p>Explora nuestras presentaciones disponibles de café y cacao. Haz clic en cualquier producto para ver detalles o agrégalo al carrito para cotizar.</p>
+      </div>
+
+      <!-- FILTROS -->
+      <div class="filters-bar">
+        <input type="text" id="searchInput" placeholder="Buscar café, cacao, grano o polvo..." oninput="renderCatalog()">
+        <select id="brandFilter" onchange="renderCatalog()">
+          <option value="">Todas las marcas</option>
+          <option value="AURUM CACAO Y CAFÉ">AURUM CACAO Y CAFÉ</option>
+        </select>
+        <select id="expiryFilter" onchange="renderCatalog()">
+          <option value="">Todos los vencimientos</option>
+          <option value="11/11/2027">Vence: 11/11/2027</option>
+        </select>
+        <select id="priceFilter" onchange="renderCatalog()">
+          <option value="">Cualquier precio</option>
+          <option value="150">Hasta L 150</option>
+          <option value="300">Hasta L 300</option>
+        </select>
+      </div>
+
+      <!-- GRID DE PRODUCTOS -->
+      <div class="catalog-grid" id="catalogGrid"></div>
+    </div>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section class="about-section" id="nosotros">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <span style="color:var(--accent); font-weight:700; font-size:0.9rem;">NUESTRA HISTORIA Y RESPALDO</span>
+          <h2 style="font-size:2rem; font-weight:800; margin:0.5rem 0 1rem;">Llevando la riqueza agrícola de Honduras al mercado global</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;"><strong>AURUM CACAO Y CAFÉ</strong> nace con la visión de ofrecer café y cacao hondureño de alta pureza, cuidando cada etapa desde la selección del grano hasta su molienda y empaque final.</p>
+          <div class="process-steps">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div><strong>Cosecha y Selección</strong><p style="font-size:0.9rem; color:var(--text-muted);">Escogemos granos sanos y aromáticos de productores hondureños.</p></div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div><strong>Procesamiento y Control</strong><p style="font-size:0.9rem; color:var(--text-muted);">Opciones en grano entero o en polvo fino con trazabilidad clara.</p></div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div><strong>Envío y Exportación</strong><p style="font-size:0.9rem; color:var(--text-muted);">Coordinamos entregas locales y envíos internacionales con total seguridad.</p></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:1rem;">Experiencias de nuestros compradores</h3>
+          <div class="testimonial-card">
+            <p style="font-style:italic; font-size:0.93rem;">"El aroma del Café en grano de AURUM es extraordinario. Llegó bien empacado y la atención por WhatsApp fue muy cordial y rápida."</p>
+            <strong style="display:block; margin-top:0.6rem; font-size:0.85rem;">— Sofía M., Tegucigalpa</strong>
+          </div>
+          <div class="testimonial-card">
+            <p style="font-style:italic; font-size:0.93rem;">"Pedimos Cacao en polvo y Cacao en grano para nuestra repostería. Calidad impecable y precios muy accesibles."</p>
+            <strong style="display:block; margin-top:0.6rem; font-size:0.85rem;">— Roberto G., Comprador Internacional</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTÁCTANOS -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contáctanos</h2>
+        <p>¿Deseas cotizar pedidos para exportación o consumo local? Escríbenos directamente.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info-box">
+          <div>
+            <h3 style="font-size:1.5rem; margin-bottom:0.8rem;">Atención Comercial</h3>
+            <p style="color:#e6dcd3; margin-bottom:1.5rem;">Estamos listos para atender tus consultas sobre disponibilidad, envíos nacionales e internacionales y pedidos por volumen.</p>
+            <p style="margin-bottom:0.6rem;">📍 <strong>Origen:</strong> Honduras, C.A.</p>
+            <p style="margin-bottom:0.6rem;">📱 <strong>WhatsApp Business:</strong> +504 9340-8605</p>
+            <p style="margin-bottom:1.5rem;">🕒 <strong>Horario:</strong> Lunes a Sábado, 8:00 AM - 6:00 PM</p>
+          </div>
+          <a href="https://wa.me/50493408605?text=Hola%20%F0%9F%98%8A%20Vengo%20de%20la%20tienda%20web%20de%20AURUM%20CACAO%20Y%20CAF%C3%89%20y%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener" class="btn btn-whatsapp" style="width:100%;">
+            Chatear por WhatsApp (+504 9340-8605)
+          </a>
+        </div>
+        <form class="contact-form" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" id="contactName" required placeholder="Ej. María Fernanda López">
+          </div>
+          <div class="form-group">
+            <label>País / Ciudad y Teléfono</label>
+            <input type="text" id="contactPhone" required placeholder="Ej. Honduras / +504 9999-9999">
+          </div>
+          <div class="form-group">
+            <label>Productos de interés o consulta</label>
+            <textarea id="contactMsg" rows="4" required placeholder="Hola, me interesa cotizar café y cacao..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Enviar consulta por WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--primary); color:#d6c7bc; text-align:center; padding:2rem 1.5rem; font-size:0.9rem;">
+    <p>© 2026 AURUM CACAO Y CAFÉ — Honduras para el mundo. Precios expresados en Lempiras (L).</p>
+  </footer>
+
+  <!-- MODAL DE DETALLE DE PRODUCTO -->
+  <div class="modal-backdrop" id="productModal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <img id="modalImg" class="modal-img" src="" alt="Producto AURUM">
+      <div class="modal-content">
+        <div>
+          <span class="badge badge-avail" style="display:inline-block; margin-bottom:0.6rem;">Disponible • Exportación</span>
+          <h2 id="modalTitle" style="font-size:1.6rem; font-weight:800; margin-bottom:0.25rem;"></h2>
+          <p id="modalCode" style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.8rem;"></p>
+          <div id="modalPrice" style="font-size:1.75rem; font-weight:800; color:var(--accent); margin-bottom:1rem;"></div>
+          <p id="modalDesc" style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.2rem;"></p>
+          <div style="background:var(--bg); padding:0.95rem; border-radius:10px; border:1px solid var(--border); font-size:0.9rem;">
+            <div><strong>Marca:</strong> <span id="modalBrand"></span></div>
+            <div><strong>Categoría:</strong> <span id="modalCat"></span></div>
+            <div><strong>Presentación (Libras):</strong> <span id="modalWeight"></span></div>
+            <div><strong>Vencimiento:</strong> <span id="modalExpiry"></span></div>
+            <div><strong>Motor / Especificación técnica:</strong> <span id="modalMotor"></span></div>
+          </div>
+        </div>
+        <div style="display:grid; gap:0.6rem; margin-top:1.5rem;">
+          <button class="btn btn-primary" id="modalAddBtn">Agregar al carrito</button>
+          <a id="modalWaBtn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp">Cotizar este producto por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARRITO LATERAL (DRAWER) -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3 style="font-weight:800;">Tu Pedido AURUM</h3>
+      <button onclick="toggleCart()" style="background:none; border:none; font-size:1.3rem; cursor:pointer;">✕</button>
+    </div>
+    <div class="cart-items" id="cartItemsContainer"></div>
+    <div class="cart-footer">
+      <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem; font-size:0.92rem; color:var(--text-muted);">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal">L 0</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:1rem; font-size:1.2rem; font-weight:800;">
+        <span>Total Referencial:</span>
+        <span id="cartTotal" style="color:var(--accent);">L 0</span>
+      </div>
+      <button onclick="checkoutWhatsApp()" class="btn btn-whatsapp" style="width:100%;">
+        Finalizar pedido por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- CHATBOT FLOTANTE -->
+  <button class="chatbot-fab" onclick="toggleChat()" title="Asistente Virtual AURUM">☕</button>
+  <div class="chatbot-window" id="chatWindow">
+    <div class="chat-head">
+      <div style="display:flex; align-items:center; gap:0.6rem;">
+        <span style="font-size:1.4rem;">🤖</span>
+        <div>
+          <strong style="display:block; font-size:0.95rem;">Asistente AURUM</strong>
+          <small style="font-size:0.75rem; opacity:0.85;">En línea • Café y Cacao de Honduras</small>
+        </div>
+      </div>
+      <button onclick="toggleChat()" style="background:none; border:none; color:#fff; font-size:1.1rem; cursor:pointer;">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg msg-bot">¡Hola! 👋 Bienvenido a <strong>AURUM CACAO Y CAFÉ</strong>. ¿En qué puedo ayudarte hoy? Selecciona un tema o escribe tu consulta.</div>
+    </div>
+    <div class="quick-chips">
+      <span class="chip" onclick="sendQuickReply('Horarios')">🕒 Horarios</span>
+      <span class="chip" onclick="sendQuickReply('Envío de productos')">🌎 Envío de productos</span>
+      <span class="chip" onclick="sendQuickReply('Precio')">💰 Precio</span>
+      <span class="chip" onclick="sendQuickReply('Entregas')">🚚 Entregas</span>
+      <span class="chip" onclick="sendQuickReply('Productos')">☕ Productos</span>
+      <span class="chip" onclick="sendQuickReply('Contacto')">📞 Contacto</span>
+      <span class="chip" onclick="sendQuickReply('Soporte técnico')">🛠️ Soporte técnico</span>
+      <span class="chip" onclick="sendQuickReply('Seguimiento de pedidos')">📦 Seguimiento</span>
+    </div>
+    <form class="chat-input-row" onsubmit="handleChatSubmit(event)">
+      <input type="text" id="chatInput" placeholder="Escribe tu pregunta...">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // DATASET OFICIAL DEL CATÁLOGO AURUM CACAO Y CAFÉ (Sin datos inventados; campos no aplicables como "N/D")
+    const products = [
+      {
+        id: "AUR-001",
+        nombre: "Café en grano",
+        categoria: "Café",
+        marca: "AURUM CACAO Y CAFÉ",
+        vencimiento: "11/11/2027",
+        libras: "1lb",
+        motor: "N/D",
+        precio: 150,
+        foto: "https://lh3.googleusercontent.com/d/1O1LWwIlUrqW0wAcPqpWctNyOjgBh1hCy",
+        estado: "Disponible",
+        etiquetaOrigen: "Origen Honduras",
+        descripcion: "Café en grano seleccionado de marca AURUM CACAO Y CAFÉ, presentación de 1lb con vencimiento el 11/11/2027."
+      },
+      {
+        id: "AUR-002",
+        nombre: "Café en Polvo",
+        categoria: "Café",
+        marca: "AURUM CACAO Y CAFÉ",
+        vencimiento: "11/11/2027",
+        libras: "1lb",
+        motor: "N/D",
+        precio: 150,
+        foto: "https://lh3.googleusercontent.com/d/1GY2qFkLQpoOF2agjoM59l5tdv4Nq06c7",
+        estado: "Disponible",
+        etiquetaOrigen: "Origen Honduras",
+        descripcion: "Café en Polvo de marca AURUM CACAO Y CAFÉ, presentación de 1lb con vencimiento el 11/11/2027."
+      },
+      {
+        id: "AUR-003",
+        nombre: "Cacao en grano",
+        categoria: "Cacao",
+        marca: "AURUM CACAO Y CAFÉ",
+        vencimiento: "11/11/2027",
+        libras: "1lb",
+        motor: "N/D",
+        precio: 150,
+        foto: "https://lh3.googleusercontent.com/d/1c8qBoxivEJLn-lkrt8VQzVt0zMNsLETL",
+        estado: "Disponible",
+        etiquetaOrigen: "Origen Honduras",
+        descripcion: "Cacao en grano de marca AURUM CACAO Y CAFÉ, presentación de 1lb con vencimiento el 11/11/2027."
+      },
+      {
+        id: "AUR-004",
+        nombre: "Cacao en polvo",
+        categoria: "Cacao",
+        marca: "AURUM CACAO Y CAFÉ",
+        vencimiento: "11/11/2027",
+        libras: "1lb",
+        motor: "N/D",
+        precio: 150,
+        foto: "https://lh3.googleusercontent.com/d/1mEaiwZ_xLhQob5WL28whdi2UmreQT6hq",
+        estado: "Disponible",
+        etiquetaOrigen: "Origen Honduras",
+        descripcion: "Cacao en polvo de marca AURUM CACAO Y CAFÉ, presentación de 1lb con vencimiento el 11/11/2027."
+      }
+    ];
+
+    const WHATSAPP_NUMBER = "50493408605";
+    let cart = JSON.parse(localStorage.getItem("aurum_cart")) || [];
+
+    // FORMATEADOR DE LEMPIRAS
+    function formatLps(amount) {
+      return "L " + Number(amount).toLocaleString("en-US");
+    }
+
+    // RENDERIZAR CATÁLOGO
+    function renderCatalog() {
+      const search = document.getElementById("searchInput").value.toLowerCase();
+      const brand = document.getElementById("brandFilter").value;
+      const expiry = document.getElementById("expiryFilter").value;
+      const maxPrice = Number(document.getElementById("priceFilter").value);
+
+      const grid = document.getElementById("catalogGrid");
+      const filtered = products.filter(p => {
+        const matchSearch = `${p.nombre} ${p.marca} ${p.categoria}`.toLowerCase().includes(search);
+        const matchBrand = !brand || p.marca === brand;
+        const matchExpiry = !expiry || p.vencimiento === expiry;
+        const matchPrice = !maxPrice || p.precio <= maxPrice;
+        return matchSearch && matchBrand && matchExpiry && matchPrice;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; padding:2rem; color:var(--text-muted);">No se encontraron productos con esos filtros.</p>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => `
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img src="${p.foto}" alt="${p.nombre} - ${p.marca}" loading="lazy">
+            <div class="badges">
+              <span class="badge badge-avail">${p.estado}</span>
+              <span class="badge badge-origin">${p.etiquetaOrigen}</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">${p.marca} • ID: ${p.id}</div>
+            <h3 class="card-title">${p.nombre}</h3>
+            <div class="card-specs">
+              <span>⚖️ Peso: ${p.libras}</span>
+              <span>📅 Vence: ${p.vencimiento}</span>
+            </div>
+            <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:1rem;">${p.descripcion}</p>
+            <div class="card-price">${formatLps(p.precio)}</div>
+            <div class="card-actions">
+              <button class="btn btn-secondary btn-sm" onclick="openModal('${p.id}')">Ver detalles</button>
+              <button class="btn btn-primary btn-sm" onclick="addToCart('${p.id}')">+ Agregar</button>
+            </div>
+            <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola 😊 Me interesa cotizar ${p.nombre} (${p.marca}) de ${p.libras} con precio ${formatLps(p.precio)} que vi en su web. ¿Me confirmas disponibilidad?`)}"
+               target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm" style="margin-top:0.5rem; width:100%;">
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    // MODAL DETALLES
+    function openModal(id) {
+      const p = products.find(item => item.id === id);
+      if (!p) return;
+      document.getElementById("modalImg").src = p.foto;
+      document.getElementById("modalTitle").textContent = p.nombre;
+      document.getElementById("modalCode").textContent = `Código de producto: ${p.id}`;
+      document.getElementById("modalPrice").textContent = formatLps(p.precio);
+      document.getElementById("modalDesc").textContent = p.descripcion;
+      document.getElementById("modalBrand").textContent = p.marca;
+      document.getElementById("modalCat").textContent = p.categoria;
+      document.getElementById("modalWeight").textContent = p.libras;
+      document.getElementById("modalExpiry").textContent = p.vencimiento;
+      document.getElementById("modalMotor").textContent = p.motor;
+
+      document.getElementById("modalAddBtn").onclick = () => {
+        addToCart(p.id);
+        closeModal();
+      };
+
+      const waMsg = `Hola 😊 Me interesa cotizar *${p.nombre}* (${p.marca}, ${p.libras}, Vence: ${p.vencimiento}) [ID: ${p.id}] publicado en ${formatLps(p.precio)}. ¿Me confirmas disponibilidad y próximos pasos?`;
+      document.getElementById("modalWaBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`;
+
+      document.getElementById("productModal").classList.add("active");
+    }
+
+    function closeModal() {
+      document.getElementById("productModal").classList.remove("active");
+    }
+    function closeModalOnBackdrop(e) {
+      if (e.target.id === "productModal") closeModal();
+    }
+
+    // CARRITO DE COMPRAS
+    function saveCart() {
+      localStorage.setItem("aurum_cart", JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    function addToCart(id) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id, qty: 1 });
+      }
+      saveCart();
+      showToast("Producto agregado a tu pedido");
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      saveCart();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(i => i.id !== id);
+      saveCart();
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((acc, item) => acc + item.qty, 0);
+      document.getElementById("cartCount").textContent = count;
+
+      const container = document.getElementById("cartItemsContainer");
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="text-align:center; color:var(--text-muted); margin-top:2rem;">Tu carrito está vacío.<br>Selecciona café o cacao del catálogo para cotizar.</p>`;
+        document.getElementById("cartSubtotal").textContent = "L 0";
+        document.getElementById("cartTotal").textContent = "L 0";
+        return;
+      }
+
+      let total = 0;
+      container.innerHTML = cart.map(item => {
+        const p = products.find(prod => prod.id === item.id);
+        if (!p) return "";
+        const itemTotal = p.precio * item.qty;
+        total += itemTotal;
+        return `
+          <div class="cart-item">
+            <img src="${p.foto}" alt="${p.nombre}">
+            <div style="flex:1;">
+              <strong style="font-size:0.95rem; display:block;">${p.nombre} (${p.libras})</strong>
+              <small style="color:var(--accent); font-weight:700;">${formatLps(p.precio)} c/u</small>
+              <div class="qty-controls">
+                <button class="qty-btn" onclick="changeQty('${p.id}', -1)">-</button>
+                <span style="font-size:0.85rem; font-weight:700;">${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty('${p.id}', 1)">+</button>
+                <button onclick="removeFromCart('${p.id}')" style="margin-left:auto; background:none; border:none; color:#ef4444; font-size:0.8rem; cursor:pointer;">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      document.getElementById("cartSubtotal").textContent = formatLps(total);
+      document.getElementById("cartTotal").textContent = formatLps(total);
+    }
+
+    function toggleCart() {
+      document.getElementById("cartDrawer").classList.toggle("open");
+    }
+
+    // FINALIZAR PEDIDO POR WHATSAPP (+50493408605)
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        showToast("Agrega al menos un producto antes de finalizar");
+        return;
+      }
+
+      let total = 0;
+      const lines = cart.map((item, idx) => {
+        const p = products.find(prod => prod.id === item.id);
+        const subtotal = p.precio * item.qty;
+        total += subtotal;
+        return `${idx + 1}. *${p.nombre}* (${p.marca}) - ${p.libras} - Vence: ${p.vencimiento} [ID: ${p.id}] - Cant: ${item.qty} - Subtotal: ${formatLps(subtotal)}`;
+      });
+
+      const message =
+        `Hola 😊 Me interesa cotizar y conocer disponibilidad de estos productos que vi en su web:\n\n` +
+        `${lines.join("\n")}\n\n` +
+        `*Total referencial:* ${formatLps(total)}\n\n` +
+        `¿Me confirmas disponibilidad y próximos pasos? Me encantaría coordinar una llamada o visita para concretar el pedido.`;
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank", "noopener");
+    }
+
+    // FORMULARIO DE CONTACTO
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("contactName").value;
+      const phone = document.getElementById("contactPhone").value;
+      const msg = document.getElementById("contactMsg").value;
+      const text = `Hola 😊 Soy *${name}* (${phone}). Consulta desde la tienda web de AURUM CACAO Y CAFÉ:\n\n"${msg}"`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    }
+
+    // CHATBOT INTELIGENTE
+    function toggleChat() {
+      document.getElementById("chatWindow").classList.toggle("open");
+    }
+
+    function getBotResponse(input) {
+      const q = input.toLowerCase();
+      if (q.includes("horario")) return "🕒 Nuestro horario de atención es de Lunes a Sábado de 8:00 AM a 6:00 PM (Hora de Honduras).";
+      if (q.includes("envio") || q.includes("envío") || q.includes("exporta")) return "🌎 Realizamos envíos nacionales en Honduras y coordinamos envíos internacionales bajo cotización previa por WhatsApp.";
+      if (q.includes("precio") || q.includes("costo") || q.includes("vale")) return "💰 Todos nuestros productos en presentación de 1lb (Café en grano, Café en Polvo, Cacao en grano y Cacao en polvo) tienen un precio de L 150 cada uno.";
+      if (q.includes("entrega")) return "🚚 Coordinamos entregas locales rápidas y despachos internacionales según el volumen de tu pedido.";
+      if (q.includes("producto") || q.includes("catalogo") || q.includes("cafe") || q.includes("cacao")) return "☕ Contamos con 4 productos estrella de AURUM CACAO Y CAFÉ (1lb, vencimiento 11/11/2027): Café en grano, Café en Polvo, Cacao en grano y Cacao en polvo.";
+      if (q.includes("contacto") || q.includes("whatsapp") || q.includes("telefono")) return "📞 Puedes escribirnos directamente al WhatsApp +504 9340-8605 haciendo clic en cualquier botón verde de la página.";
+      if (q.includes("soporte")) return "🛠️ Si tienes alguna duda con tu carrito o pedido, nuestro equipo de soporte comercial te atiende al instante en el +504 9340-8605.";
+      if (q.includes("seguimiento") || q.includes("pedido")) return "📦 Una vez envíes tu carrito por WhatsApp, te asignamos confirmación de lote y guía de seguimiento de tu envío.";
+      return "Gracias por escribir a AURUM CACAO Y CAFÉ 😊 Para atención personalizada sobre pedidos o envíos internacionales, contáctanos al WhatsApp +504 9340-8605.";
+    }
+
+    function appendChatMessage(text, isUser = false) {
+      const box = document.getElementById("chatMessages");
+      const div = document.createElement("div");
+      div.className = `msg ${isUser ? "msg-user" : "msg-bot"}`;
+      div.textContent = text;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function sendQuickReply(topic) {
+      appendChatMessage(topic, true);
+      setTimeout(() => appendChatMessage(getBotResponse(topic), false), 350);
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById("chatInput");
+      const text = input.value.trim();
+      if (!text) return;
+      appendChatMessage(text, true);
+      input.value = "";
+      setTimeout(() => appendChatMessage(getBotResponse(text), false), 400);
+    }
+
+    function showToast(text) {
+      const t = document.getElementById("toast");
+      t.textContent = text;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 2600);
+    }
+
+    // INICIALIZACIÓN
+    renderCatalog();
+    updateCartUI();
+  </script>
+</body>
+</html>
